@@ -138,7 +138,7 @@ class MemoryManager:
         message_history = self.get_message_history(group_id)
         if len(message_history) > MAX_CONTEXT_MESSAGES:
             summary = await get_gpt_response(
-                list(message_history), "请用一句话总结以上对话"
+                list(message_history), "请用一句话总结以上对话,注意人物与对话的对应关系,请注意每个用户的名字与其说的话已用冒号分开，概括时注意人物关系"
             )
             message_history.clear()
             message_history.append({"role": "assistant", "content": summary})
